@@ -29,9 +29,9 @@
 		11FD6F5B22835A6B00775EAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11FD6F5D22835A6B00775EAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11FD6F5E22835A6B00775EAA /* ARMatteExampleSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ARMatteExampleSwift-Bridging-Header.h"; sourceTree = "<group>"; };
-		58489AB0584890D000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
+		25DCD09025DBDC7000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		718E55B92289C30A00A9B13B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		8849D3F08849C0B000000001 /* SampleCode.xcconfig */ = {isa = PBXFileReference; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
+		75E0906075E0961000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +51,8 @@
 				718E55B92289C30A00A9B13B /* README.md */,
 				11FD6F4B22835A6B00775EAA /* ARMatteExampleSwift */,
 				11FD6F4A22835A6B00775EAA /* Products */,
-				8849D8808849DA1000000001 /* Configuration */,
-				8855F7608855F9E000000001 /* LICENSE */,
+				25DBE10025DBE0C000000001 /* Configuration */,
+				75E1A92075E1A1E000000001 /* LICENSE */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,18 +81,18 @@
 			path = ARMatteExampleSwift;
 			sourceTree = "<group>";
 		};
-		8849D8808849DA1000000001 /* Configuration */ = {
+		25DBE10025DBE0C000000001 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				8849D3F08849C0B000000001 /* SampleCode.xcconfig */,
+				25DCD09025DBDC7000000001 /* SampleCode.xcconfig */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
 		};
-		8855F7608855F9E000000001 /* LICENSE */ = {
+		75E1A92075E1A1E000000001 /* LICENSE */ = {
 			isa = PBXGroup;
 			children = (
-				58489AB0584890D000000001 /* LICENSE.txt */,
+				75E0906075E0961000000001 /* LICENSE.txt */,
 			);
 			name = LICENSE;
 			path = LICENSE;
@@ -202,7 +202,7 @@
 /* Begin XCBuildConfiguration section */
 		11FD6F5F22835A6B00775EAA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8849D3F08849C0B000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 25DCD09025DBDC7000000001 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -264,7 +264,7 @@
 		};
 		11FD6F6022835A6B00775EAA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8849D3F08849C0B000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 25DCD09025DBDC7000000001 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -320,7 +320,7 @@
 		};
 		11FD6F6222835A6B00775EAA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8849D3F08849C0B000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 25DCD09025DBDC7000000001 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -343,7 +343,7 @@
 		};
 		11FD6F6322835A6B00775EAA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8849D3F08849C0B000000001 /* SampleCode.xcconfig */;
+			baseConfigurationReference = 25DCD09025DBDC7000000001 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

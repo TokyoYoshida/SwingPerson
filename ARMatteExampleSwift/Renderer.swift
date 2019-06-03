@@ -518,13 +518,9 @@ class Renderer {
             return
         }
 
-        if currentFrame.segmentationBuffer != nil {
-            alphaTexture = matteGenerator.generateMatte(from: currentFrame, commandBuffer: commandBuffer)
-        }
+        alphaTexture = matteGenerator.generateMatte(from: currentFrame, commandBuffer: commandBuffer)
 
-        if currentFrame.estimatedDepthData != nil {
-            dilatedDepthTexture = matteGenerator.generateDilatedDepth(from: currentFrame, commandBuffer: commandBuffer)
-        }
+        dilatedDepthTexture = matteGenerator.generateDilatedDepth(from: currentFrame, commandBuffer: commandBuffer)
     }
     
     func createTexture(fromPixelBuffer pixelBuffer: CVPixelBuffer, pixelFormat: MTLPixelFormat, planeIndex: Int) -> CVMetalTexture? {
