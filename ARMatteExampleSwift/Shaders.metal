@@ -234,7 +234,7 @@ fragment half4 compositeImageFragmentShader(CompositeColorInOut in [[ stage_in ]
     }
 
 
-    half4 occluderResult = mix(sceneColor, cameraColor, alpha);
+    half4 occluderResult = mix(sceneColor, half4(float4(1.0, 0.0, 0.0, 1.0)), alpha);
     half4 mattingResult = mix(sceneColor, occluderResult, showOccluder);
     return mattingResult;
 }
