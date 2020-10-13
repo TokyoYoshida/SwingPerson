@@ -412,7 +412,7 @@ fragment half4 compositeImageFragmentShader(CompositeColorInOut in [[ stage_in ]
     );
     displacedUV = fract( sceneTexCoord + displacedUV );
 
-    half4 displacedCol = sceneColorTexture.sample(s, displacedUV);
+    half4 displacedCol = half4(sceneColorTexture.sample(s, displacedUV));
     half4 occluderResult = mix(sceneColor, half4(float4(1.0, 0.0, 0.0, 1.0)), alpha);
     half4 mattingResult = mix(sceneColor, occluderResult, showOccluder);
     return mattingResult;
