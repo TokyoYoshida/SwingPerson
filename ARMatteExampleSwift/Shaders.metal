@@ -405,11 +405,14 @@ fragment half4 compositeImageFragmentShader(CompositeColorInOut in [[ stage_in ]
         showOccluder = (half)step(dilatedDepth, sceneDepth); // forwardZ case
     }
 
+    float2 _Time = float2(0,0);
     float2 displacedUV = float2(
-        0.5 * snoise(float3(i.uv.x+cameraColor.r*2.0,i.uv.y+cameraColor.g*2.0, _Time.y*0.3)),
-        0.5 * snoise(float3(i.uv.x+cameraColor.g*2.0,i.uv.y+cameraColor.b*2.0, _Time.y*0.4))
+        0.5 * snoise(float3(sceneTexCoord.x+cameraColor.r*2.0,sceneTexCoord.y+cameraColor.g*2.0, _Time.y*0.3)),
+        0.5 * snoise(float3(sceneTexCoord.x+cameraColor.g*2.0,sceneTexCoord.y+cameraColor.b*2.0, _Time.y*0.4))
     );
+    displacedUV = fract( sceneTexCoord + displacedUV );
 
+    half4 displacedCol = sceneColorTexture.sample(s, displacedUV);
     half4 occluderResult = mix(sceneColor, half4(float4(1.0, 0.0, 0.0, 1.0)), alpha);
     half4 mattingResult = mix(sceneColor, occluderResult, showOccluder);
     return mattingResult;
