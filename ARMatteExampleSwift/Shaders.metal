@@ -397,7 +397,7 @@ fragment half4 compositeImageFragmentShader(CompositeColorInOut in [[ stage_in ]
     half4 sceneColor = half4(sceneColorTexture.sample(s, sceneTexCoord));
     float sceneDepth = sceneDepthTexture.sample(s, sceneTexCoord);
 
-    float2 modifier = float2(sin(myUniforms.time), 0);
+    float2 modifier = float2(sin(cameraTexCoord.y + myUniforms.time*5)*0.2, 0);
     half4 cameraColor = half4(rgb);
     half alpha = half(alphaTexture.sample(s, cameraTexCoord + modifier).r);
 
