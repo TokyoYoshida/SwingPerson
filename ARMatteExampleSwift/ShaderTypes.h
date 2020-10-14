@@ -17,7 +17,8 @@ typedef enum BufferIndices {
     kBufferIndexMeshPositions    = 0,
     kBufferIndexMeshGenerics     = 1,
     kBufferIndexInstanceUniforms = 2,
-    kBufferIndexSharedUniforms   = 3
+    kBufferIndexSharedUniforms   = 3,
+    kBufferIndexMyUniforms   = 4
 } BufferIndices;
 
 // Attribute index values shared between shader and C code to ensure Metal shader vertex

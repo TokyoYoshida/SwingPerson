@@ -10,6 +10,10 @@ import Metal
 import MetalKit
 import ARKit
 
+struct Uniforms {
+    var time: Float = 0
+}
+
 protocol RenderDestinationProvider {
     var currentRenderPassDescriptor: MTLRenderPassDescriptor? { get }
     var currentDrawable: CAMetalDrawable? { get }
@@ -37,6 +41,9 @@ let kImagePlaneVertexData: [Float] = [
 ]
 
 class Renderer {
+    var uniforms = Uniforms()
+    private var startDate: Date = Date()
+
     let session: ARSession
     let matteGenerator: ARMatteGenerator
     let device: MTLDevice
@@ -49,6 +56,7 @@ class Renderer {
     var anchorUniformBuffer: MTLBuffer!
     var imagePlaneVertexBuffer: MTLBuffer!
     var scenePlaneVertexBuffer: MTLBuffer!
+    var uniformsBuffer: MTLBuffer!
     var capturedImagePipelineState: MTLRenderPipelineState!
     var capturedImageDepthState: MTLDepthStencilState!
     var anchorPipelineState: MTLRenderPipelineState!
@@ -635,6 +643,14 @@ class Renderer {
 
         // Setup textures for the composite fragment shader
         renderEncoder.setFragmentBuffer(sharedUniformBuffer, offset: sharedUniformBufferOffset, index: Int(kBufferIndexSharedUniforms.rawValue))
+
+        let time = Float(Date().timeIntervalSince(startDate))
+        uniforms.time = time
+        uniformsBuffer = device.makeBuffer(bytes: &uniforms, length: MemoryLayout<Uniforms>.stride, options: [])
+        uniformsBuffer.label = "UniformsBuffer"
+
+        renderEncoder.setFragmentBuffer(uniformsBuffer, offset: 0, index: Int(kBufferIndexMyUniforms.rawValue))
+
         renderEncoder.setFragmentTexture(CVMetalTextureGetTexture(textureY), index: 0)
         renderEncoder.setFragmentTexture(CVMetalTextureGetTexture(textureCbCr), index: 1)
         renderEncoder.setFragmentTexture(sceneColorTexture, index: 2)

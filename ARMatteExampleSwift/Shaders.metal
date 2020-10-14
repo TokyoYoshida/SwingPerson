@@ -369,6 +369,10 @@ float4 snoise_grad(float3 v)
     return 42.0 * float4(grad, dot(m4, px));
 }
 
+struct Uniforms {
+    float time;
+};
+
 // Composite the image fragment function.
 fragment half4 compositeImageFragmentShader(CompositeColorInOut in [[ stage_in ]],
                                     texture2d<float, access::sample> capturedImageTextureY [[ texture(0) ]],
@@ -377,7 +381,9 @@ fragment half4 compositeImageFragmentShader(CompositeColorInOut in [[ stage_in ]
                                     depth2d<float, access::sample> sceneDepthTexture [[ texture(3) ]],
                                     texture2d<float, access::sample> alphaTexture [[ texture(4) ]],
                                     texture2d<float, access::sample> dilatedDepthTexture [[ texture(5) ]],
-                                    constant SharedUniforms &uniforms [[ buffer(kBufferIndexSharedUniforms) ]])
+                                    constant SharedUniforms &uniforms [[ buffer(kBufferIndexSharedUniforms) ]],
+                                    constant Uniforms &myUniforms [[buffer(kBufferIndexMyUniforms)]]
+                                            )
 {
     constexpr sampler s(address::clamp_to_edge, filter::linear);
 
@@ -391,7 +397,7 @@ fragment half4 compositeImageFragmentShader(CompositeColorInOut in [[ stage_in ]
     half4 sceneColor = half4(sceneColorTexture.sample(s, sceneTexCoord));
     float sceneDepth = sceneDepthTexture.sample(s, sceneTexCoord);
 
-    float2 modifier = float2(0.1, 0);
+    float2 modifier = float2(sin(myUniforms.time), 0);
     half4 cameraColor = half4(rgb);
     half alpha = half(alphaTexture.sample(s, cameraTexCoord + modifier).r);
 
